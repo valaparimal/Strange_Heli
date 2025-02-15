@@ -136,6 +136,10 @@ body{
     justify-content: center;
     align-items: center;
 }
+#gameOver:hover{
+    cursor:pointer;
+    font-size: 3.1rem;
+}
 
 #help{
     position: absolute;
@@ -162,4 +166,9 @@ body{
     padding: 10px;
     box-shadow: 0px 0px 20px 1px;
     border-radius: 50px;
+}
+
+.section{
+    text-align: left;
+    padding-top: 10px;
 }

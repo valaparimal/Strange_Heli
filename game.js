@@ -40,11 +40,12 @@ function createZomby(){
 
 function zombyMove(){
 
-    document.querySelectorAll(".zomby").forEach((e)=>{
+    document.querySelectorAll(".zomby").forEach(async(e)=>{
         // remove out side box
         if(--e.style.gridRowStart == 0)
         {
-            e.remove();
+           await gameOver(e);
+           return;
         }
     });
 }
@@ -92,12 +93,15 @@ function bomMove(){
 
                 // set audio 
 
-                zombyDath.muted=false;
-                zombyDath.play();
-                zombyDath.volume=0.1;
+                let tempDathAudio = zombyDath;
+                tempDathAudio.muted=false;
+                tempDathAudio.currentTime=1;
+                tempDathAudio.play();
+                tempDathAudio.volume=0.1;
 
                 setTimeout(()=>{
-                    zombyDath.muted=true;
+                    tempDathAudio.muted=true;
+                    tempDathAudio.pause();
                 },2000);
 
                 bom.remove();
@@ -175,51 +179,56 @@ function chackGameOver(){
     document.querySelectorAll(".zomby").forEach((e)=>{
         if(e.style.gridRowStart == helicopter.style.gridRowStart && e.style.gridColumnStart == helicopter.style.gridColumnStart)
         {
-            helicopterDath.muted=false;
-            helicopterDath.play();
-            helicopterSound.pause();
-            helidath=true;
-            console.log("game Over");
-            
-            if(+hiScore < score)
-            {
-                window.localStorage.setItem("hiScore",`${score}`);
-            }
-            
-            e.setAttribute("class","temp");
-
-            b=0;
-            for(let i=19;i>=0;i--)
-            {  b+=50;
-                setTimeout(()=>{
-
-                    if(i%2==0)
-                    {
-                        helicopter.style.backgroundColor="gold";
-                    }
-                    else{
-                        helicopter.style.backgroundColor="black";
-                    }
-                    e.style.width=`${i/4}rem`;
-                    e.style.height=`${i/4}rem`;
-                },b);
-                
-            }
-
-            // e.style.backgroundImage='linear-gradient(to right,blue,lightgreen,lightblue,pink,red)';
-            setTimeout(()=>{
-                document.querySelector(".helicopter").remove();
-                document.querySelector(".before-gameOver-container").setAttribute("class","after-gameOver-container");
-                window.addEventListener("click",()=>{
-                    window.location.reload();
-                });
-                window.addEventListener("keydown",()=>{
-                    window.location.reload();
-                });  
-            },1200);
+            gameOver(e);  
+            return; 
         }
     });
 
+}
+
+function gameOver(e){
+    helicopterDath.muted=false;
+    helicopterDath.play();
+    helicopterSound.pause();
+    helidath=true;
+    console.log("game Over");
+    
+    if(+hiScore < score)
+    {
+        window.localStorage.setItem("hiScore",`${score}`);
+    }
+    
+    e.setAttribute("class","temp");
+
+    b=0;
+    for(let i=19;i>=0;i--)
+    {  b+=50;
+        setTimeout(()=>{
+
+            if(i%2==0)
+            {
+                helicopter.style.backgroundColor="gold";
+            }
+            else{
+                helicopter.style.backgroundColor="black";
+            }
+            e.style.width=`${i/4}rem`;
+            e.style.height=`${i/4}rem`;
+        },b);
+        
+    }
+
+    // e.style.backgroundImage='linear-gradient(to right,blue,lightgreen,lightblue,pink,red)';
+    setTimeout(()=>{
+        document.querySelector(".helicopter").remove();
+        document.querySelector(".before-gameOver-container").setAttribute("class","after-gameOver-container");
+        window.addEventListener("click",()=>{
+            window.location.reload();
+        });
+        window.addEventListener("keydown",()=>{
+            window.location.reload();
+        });  
+    },1200);
 }
 
 
@@ -367,7 +376,7 @@ window.addEventListener("keydown",(e)=>{
 //game start
 
 document.querySelector("#playBtn").addEventListener("click",()=>{
-
+        hideElement();
         document.querySelector(".playBtn-container").remove();
         helicopterSound.play();
         helicopterSound.volume=0.05;
@@ -392,3 +401,20 @@ document.querySelector("#reset-hiscore").addEventListener("click",()=>{
         window.location.reload();
     }
 });
+
+
+
+
+function hideElement(){
+    document.querySelector("#gameTitle").style.display="none";
+    document.querySelector("#help").style.display="none";
+    document.querySelector("#score").style.opacity=0.7;
+    document.querySelector("#hiScore").style.display="none";
+    document.querySelector("#reset-hiscore").style.display="none";
+    document.querySelector("#discreaptionContainer").style.display="none";
+    document.querySelector(".gamebox-container").style.margin=0+"px";
+
+    gamebox.style.width=100+"vw";
+    gamebox.style.height=100+"vh";
+    gamebox.style.borderRadius=0+"%";
+}
