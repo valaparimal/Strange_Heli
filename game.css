@@ -1,0 +1,152 @@
+*{
+    margin:0%;
+}
+body{
+    text-align: center;
+    background: linear-gradient(lightblue,lightgreen,yellow,green);
+}
+
+.gamebox-container{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+.gamebox{
+    height: 35rem;
+    width:50rem;
+    /* background: linear-gradient(lightblue,lightgreen,yellow,green); */
+    background-image: url("opacity-changed-backroadTopVeiw.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* border: 1px solid green; */
+    border-radius: 10%;
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+    grid-template-rows:repeat(15,1fr);
+    column-gap: 2rem;
+}
+
+.playBtn-container{
+    position: absolute;
+    top:40%;
+    height:5rem;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#playBtn{
+    height:6rem;
+    width:10rem;
+    font-size: 3rem;
+    background:linear-gradient(to right,blue,lightblue,yellow,lightgreen,green);
+    border-radius: 3rem;
+    border:2px solid white;
+}
+#playBtn:hover{
+    cursor:pointer;
+    font-size: 4rem;
+}
+
+
+.helicopter{
+    background-image: url("helicopter-right.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius:50%;
+    width: 5rem;
+    height: 5rem;
+}
+
+.bom{
+    /* background:linear-gradient(to right,green,lightgreen,green,lightgreen,green); */
+    background-image: url("bomb.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    border-radius: 50%;
+}
+
+.zomby{
+    background-image: url("zomby.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.temp{
+    background-image: url("zomby.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+}
+.score{
+    position: absolute;
+    top:3%;
+    right: 5%;
+    background-color: rgb(79, 132, 178);
+    padding:1rem;
+    font-size: 2rem;
+    border-radius: 1rem;
+}
+.hi-score{
+    position: absolute;
+    top:15%;
+    right: 5%;
+    background-color: rgb(79, 132, 178);
+    padding:1rem;
+    font-size: 2rem;
+    border-radius: 1rem;
+}
+
+#reset-hiscore{
+    position:absolute;
+    top:27%;
+    right:5%;
+    background-color: rgb(79, 132, 178);
+    font-size: 2rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+#reset-hiscore:hover{
+    opacity: 50%;
+    cursor:grabbing;
+    color:white;
+}
+
+
+.before-gameOver-container{
+    display:none;
+}
+.after-gameOver-container{
+    position: absolute;
+    top:0%;
+    height:100%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#gameOver{
+    height:6rem;
+    width:15rem;
+    font-size: 3rem;
+    background:linear-gradient(to right,blue,lightblue,yellow,lightgreen,green);
+    border-radius: 3rem;
+    border:2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#help{
+    position: absolute;
+    bottom : 1%;
+    font-size: 2rem;
+    background-color: aqua;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    border:none;
+}
+#help:hover{
+    opacity: 50%;
+    cursor: help;
+}
