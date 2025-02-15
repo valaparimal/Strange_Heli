@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <h1>
+        <h1 id="gameTitle">
             Strange Heli
         </h1>
     </header>
@@ -19,14 +19,46 @@
         <div class="gamebox-container">
             <div class="gamebox"></div>
         </div>
-        <span class="score">Score : 0</span>
-        <span class="hi-score"></span>
+        <span class="score" id="score">Score : 0</span>
+        <span class="hi-score" id="hiScore"></span>
         <span id="reset-hiscore">Reset Hi Score</span>
         <div class="before-gameOver-container">
             <div id="gameOver">
                  <p>Game Over</p>
             </div>
          </div>
+         
+         
+         <div id="discreaptionContainer">
+            <div class="title">🚁 Strange Heli - Game Description 🧟</div>
+    
+            <div class="section">
+                <p><b>Strange Heli</b> is an action-packed helicopter game where you must stop zombies from reaching the sky!</p>
+            </div>
+    
+            <div class="section">
+                <h3>🎮 How to Play:</h3>
+                <p>✅ <b>Control the Helicopter:</b> Move <span class="highlight">left, right, forward, and backward</span> to dodge and attack.</p>
+                <p>✅ <b>Attack with Bombs:</b> Press <span class="highlight">Spacebar</span> to drop bombs.</p>
+                <p>✅ <b>Zombie Movement:</b> Zombies rise <span class="highlight">from the ground to the sky</span>. Destroy them before they reach you!</p>
+            </div>
+    
+            <div class="section">
+                <h3>🔥 Objective:</h3>
+                <p>Destroy as many zombies as possible and <span class="highlight">survive as long as you can!</span></p>
+            </div>
+    
+            <div class="section" >
+                <h3>⚠ Game Over Condition:</h3>
+                <p>If a <b>zombie touches the helicopter</b>, the game ends!</p>
+            </div>
+    
+            <div class="section">
+                <h3>💣 Are you ready for the challenge?</h3>
+                <p>Fly, fight, and bomb your way to victory! 🚁💥</p>
+            </div>
+        </div>
+        <!-- style="background: #660000; color: #ffcccc;" -->
     </main>
     <footer>
         <pre id="help">Help</pre>
