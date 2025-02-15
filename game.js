@@ -3,7 +3,7 @@ let helicopterSound = new Audio("HelicopterSound.m4a");
 let zombyDath =new Audio("zomby-dath.m4a");
 
 let helicopter=document.createElement("div");
-let bom=document.createElement("div");
+let bomb=document.createElement("div");
 let zomby,bombthrowTime=0;
 let previous="ArrowRight";
 let gamebox=document.querySelector(".gamebox");
@@ -50,42 +50,42 @@ function zombyMove(){
     });
 }
 
-function createbom(){
+function createbomb(){
 
-    bom=document.createElement("div");
-    bom.setAttribute("class","bom");
+    bomb=document.createElement("div");
+    bomb.setAttribute("class","bomb");
 
-    bom.style.gridRowStart=helicopter.style.gridRowStart;
-    bom.style.gridColumnStart=helicopter.style.gridColumnStart;
+    bomb.style.gridRowStart=helicopter.style.gridRowStart;
+    bomb.style.gridColumnStart=helicopter.style.gridColumnStart;
     if(previous === "ArrowUp")
     {
-        bom.setAttribute("id","bomUp");
+        bomb.setAttribute("id","bombUp");
     }
     else if(previous === "ArrowDown")
     {
-        bom.setAttribute("id","bomDown");
+        bomb.setAttribute("id","bombDown");
     }
     else if(previous === "ArrowLeft")
     {
-        bom.setAttribute("id","bomLeft");
+        bomb.setAttribute("id","bombLeft");
     }
     else if(previous === "ArrowRight")
     {
-        bom.setAttribute("id","bomRight");
+        bomb.setAttribute("id","bombRight");
     }
 
-    gamebox.appendChild(bom);
+    gamebox.appendChild(bomb);
 
 }
 
-function bomMove(){
+function bombMove(){
 
 
     // get point 
 
-    document.querySelectorAll(".bom").forEach((bom)=>{
+    document.querySelectorAll(".bomb").forEach((bomb)=>{
         document.querySelectorAll(".zomby").forEach((e)=>{
-            if(e.style.gridRowStart == bom.style.gridRowStart && e.style.gridColumnStart == bom.style.gridColumnStart)
+            if(e.style.gridRowStart == bomb.style.gridRowStart && e.style.gridColumnStart == bomb.style.gridColumnStart)
             {
 
                 score++;
@@ -104,7 +104,7 @@ function bomMove(){
                     tempDathAudio.pause();
                 },2000);
 
-                bom.remove();
+                bomb.remove();
                 e.setAttribute("class","temp");
                 
                 for(let i=19;i>=0;i--)
@@ -134,39 +134,43 @@ function bomMove(){
 
 }
 
-function bomUpMove(){
-    document.querySelectorAll("#bomUp").forEach((bom)=>{
-
-        if(--bom.style.gridRowStart == 0)
+function bombUpMove(){
+    document.querySelectorAll("#bombUp").forEach((bomb)=>{
+        bomb.style.width=bomb.offsetWidth-10+"px"; 
+        if(--bomb.style.gridRowStart == 0)
         {
-            bom.remove();
+            bomb.remove();
         }
     });
 }
 
-function bomDownMove(){
-    document.querySelectorAll("#bomDown").forEach((bom)=>{
-        if(++bom.style.gridRowStart == 16)
+function bombDownMove(){
+    
+    document.querySelectorAll("#bombDown").forEach((bomb)=>{
+        bomb.style.width=bomb.offsetWidth-10+"px"; 
+        if(++bomb.style.gridRowStart == 16)
         {
-            bom.remove();
+            bomb.remove();
         }
     });
 }
 
-function bomLeftMove(){
-    document.querySelectorAll("#bomLeft").forEach((bom)=>{
-        if(--bom.style.gridColumnStart == 0)
+function bombLeftMove(){
+    document.querySelectorAll("#bombLeft").forEach((bomb)=>{
+        bomb.style.height=bomb.offsetHeight-8+"px"; 
+        if(--bomb.style.gridColumnStart == 0)
         {
-            bom.remove();
+            bomb.remove();
         }
     });
 }
 
-function bomRightMove(){
-    document.querySelectorAll("#bomRight").forEach((bom)=>{
-        if(++bom.style.gridColumnStart == 9)
+function bombRightMove(){
+    document.querySelectorAll("#bombRight").forEach((bomb)=>{
+        bomb.style.height=bomb.offsetHeight-8+"px"; 
+        if(++bomb.style.gridColumnStart == 9)
         {
-            bom.remove();
+            bomb.remove();
         }
     });
 }
@@ -246,18 +250,18 @@ async function main(ctime){
 
     if(ctime-bombthrowTime > 100)
     {
-        bomUpMove();
-        bomDownMove();
-        bomLeftMove();
-        bomRightMove();
+        bombUpMove();
+        bombDownMove();
+        bombLeftMove();
+        bombRightMove();
         
-        document.querySelectorAll(".bom").forEach((bom)=>{
-                bom.style.width=bom.offsetWidth-6+`px`; 
-        });
+        // document.querySelectorAll(".bomb").forEach((bomb)=>{
+                
+        // });
 
         bombthrowTime=ctime;
     }
-    bomMove();
+    bombMove();
 
     // creat zomby 
 
@@ -283,7 +287,7 @@ async function main(ctime){
 function addKeyEvent()
 {
 
-    let isCreateBomb = true;
+    let isCreatebomb = true;
 
 window.addEventListener("keydown",(e)=>{
 
@@ -331,19 +335,19 @@ window.addEventListener("keydown",(e)=>{
     }
     if(e.key === " ")
     {
-        if(isCreateBomb){
+        if(isCreatebomb){
             setTimeout(()=>{
-                isCreateBomb = true;
+                isCreatebomb = true;
             },500);
 
-            isCreateBomb = false;
+            isCreatebomb = false;
             helicopterDath.muted=false;
                 helicopterDath.play();
                 helicopterDath.volume=0.03;
                 setTimeout(()=>{
                     helicopterDath.muted=true;
                 },500);
-                createbom();
+                createbomb();
         }
     }
 
