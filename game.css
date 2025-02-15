@@ -58,7 +58,7 @@ body{
     height: 5rem;
 }
 
-.bom{
+.bomb{
     /* background:linear-gradient(to right,green,lightgreen,green,lightgreen,green); */
     background-image: url("bomb.png");
     background-size: contain;
