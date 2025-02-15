@@ -139,7 +139,8 @@ body{
 
 #help{
     position: absolute;
-    bottom : 1%;
+    top : 1%;
+    left: 1%;
     font-size: 2rem;
     background-color: aqua;
     padding: 0.5rem;
@@ -149,4 +150,16 @@ body{
 #help:hover{
     opacity: 50%;
     cursor: help;
+}
+
+
+#discreaptionContainer{
+    width: 800px;
+    margin: auto;
+    background-color: white;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 10px;
+    box-shadow: 0px 0px 20px 1px;
+    border-radius: 50px;
 }
