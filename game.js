@@ -375,7 +375,9 @@ window.addEventListener("keydown",(e)=>{
 
 //game start
 
-document.querySelector("#playBtn").addEventListener("click",()=>{
+let playButton = document.querySelector("#playBtn");
+playButton.focus();
+playButton.addEventListener("click",()=>{
         hideElement();
         document.querySelector(".playBtn-container").remove();
         helicopterSound.play();
