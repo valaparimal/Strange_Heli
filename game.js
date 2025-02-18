@@ -11,6 +11,8 @@ let temptime=0,moveTime=0,a=0,score=0,t1=2000,t2=500;
 let f1=1,f2=1,f3=1,f4=1;
 let b=0;
 let helidath;
+let helicopterRotate;
+let direction = "right";
 
 
 helicopter.setAttribute("class","helicopter");
@@ -196,6 +198,7 @@ function gameOver(e){
     helicopterSound.pause();
     helidath=true;
     console.log("game Over");
+    clearInterval(helicopterRotate);
     
     if(+hiScore < score)
     {
@@ -226,15 +229,15 @@ function gameOver(e){
     setTimeout(()=>{
         document.querySelector(".helicopter").remove();
         document.querySelector(".before-gameOver-container").setAttribute("class","after-gameOver-container");
+        removeEventListener("keydown",keydown);
         window.addEventListener("click",()=>{
             window.location.reload();
         });
-        window.addEventListener("keydown",()=>{
+        window.addEventListener("keypress",()=>{
             window.location.reload();
         });  
     },1200);
 }
-
 
 
 
@@ -283,99 +286,142 @@ async function main(ctime){
 
 
 // add key event
+let positionx =0;
+let positiony =0;
+let gameboxBGSize = getComputedStyle(gamebox).backgroundSize.split(" ");
+let bgWidth = parseFloat(gameboxBGSize[0]);
+let bgHeight = parseFloat(gameboxBGSize[1]);
+let gameboxWidth=gamebox.clientWidth;
+let gameboxHeight = gamebox.clientHeight;
+
+let isCreatebomb = true;
 
 function addKeyEvent()
 {
-
-    let isCreatebomb = true;
-
-window.addEventListener("keydown",(e)=>{
-
-    if(e.key == "ArrowDown")
-    {
-        helicopter.style.backgroundImage="url('helicopter-down.png')";
-       if( helicopter.style.gridRowStart <10  && previous == "ArrowDown")
-       {
-            helicopter.style.gridRowStart++;
-       }
-       previous="ArrowDown";
-    }
-    else if(e.key == "ArrowUp")
-    {
-        helicopter.style.backgroundImage="url('helicopter-up.png')";
-        if(helicopter.style.gridRowStart>1  && previous == "ArrowUp")
-        {
-            helicopter.style.gridRowStart--;
-        }
-        previous="ArrowUp";
-    }
-    else if(e.key == "ArrowLeft")
-    {
-        helicopter.style.backgroundImage="url('helicopter-left.png')";
-        if( helicopter.style.gridColumnStart >1 && previous == "ArrowLeft")
-        {
-            helicopter.style.gridColumnStart--;
-        }
-        previous="ArrowLeft";
-        
-    }
-    else if(e.key == "ArrowRight")
-    {
-        helicopter.style.backgroundImage="url('helicopter-right.png')";
-        if(helicopter.style.gridColumnStart <9  && previous == "ArrowRight")
-        {
-            helicopter.style.gridColumnStart++;
-        }
-        previous="ArrowRight";
-    }
-    else if(e.key=="p" || e.key=="P"){
-        helicopterSound.muted= true;
-        alert("game paused.....      press any key to paly");
-        helicopterSound.muted=false;
-    }
-    if(e.key === " ")
-    {
-        if(isCreatebomb){
-            setTimeout(()=>{
-                isCreatebomb = true;
-            },500);
-
-            isCreatebomb = false;
-            helicopterDath.muted=false;
-                helicopterDath.play();
-                helicopterDath.volume=0.03;
-                setTimeout(()=>{
-                    helicopterDath.muted=true;
-                },500);
-                createbomb();
-        }
-    }
-
-    if(score==10 && f1)
-    {
-        t1-=100;
-        f1=0;
-    }
-    else if(score==20 && f2)
-    {
-        t1-=50;
-        t2-=100;
-        f2=0;
-    }
-    else if(score==50 && f3)
-    {
-        t1-=50;
-        f3=0;
-    }
-    else if(score==100 && f4){
-        t1-=100;
-        f4=0;
-    }
-
-});
-
-
+    window.addEventListener("keydown",keydown);
 }
+
+function keydown(e){{
+
+        if(e.key == "ArrowDown")
+        {
+            // helicopter.style.backgroundImage="url('helicopter-down.png')";
+            direction = "down";
+           if( helicopter.style.gridRowStart <10  && previous == "ArrowDown")
+           {
+                helicopter.style.gridRowStart++;
+           }else if(positiony>(-gameboxHeight)){
+                positiony-=10;
+                gamebox.style.backgroundPosition=positionx+"px "+positiony+"px";
+           }
+           previous="ArrowDown";
+        }
+        else if(e.key == "ArrowUp")
+        {
+            // helicopter.style.backgroundImage="url('helicopter-up.png')";
+            direction = "up";
+            if(helicopter.style.gridRowStart>1  && previous == "ArrowUp")
+            {
+                helicopter.style.gridRowStart--;
+            }else if(positiony<0){
+                positiony+=10;
+                gamebox.style.backgroundPosition=positionx+"px "+positiony+"px";
+            }
+            previous="ArrowUp";
+        }
+        else if(e.key == "ArrowLeft")
+        {
+            // helicopter.style.backgroundImage="url('helicopter-left.png')";
+            direction = "left";
+            if( helicopter.style.gridColumnStart >1 && previous == "ArrowLeft")
+            {
+                helicopter.style.gridColumnStart--;
+            }else if(positionx<0){
+                positionx+=10;
+                gamebox.style.backgroundPosition=positionx+"px "+positiony+"px";
+            }
+            previous="ArrowLeft";
+            
+        }
+        else if(e.key == "ArrowRight")
+        {
+            // helicopter.style.backgroundImage="url('helicopter-right.png')";
+            direction = "right";
+            if(helicopter.style.gridColumnStart <9  && previous == "ArrowRight")
+            {
+                helicopter.style.gridColumnStart++;
+            }else if(positionx>(-gameboxWidth)){
+                positionx-=10;
+                gamebox.style.backgroundPosition=positionx+"px "+positiony+"px";
+            }
+            previous="ArrowRight";
+        }
+        else if(e.key=="p" || e.key=="P"){
+            helicopterSound.muted= true;
+            alert("game paused.....      Entere/Space key to paly");
+            helicopterSound.muted=false;
+        }
+        if(e.key === " ")
+        {
+            if(isCreatebomb){
+                setTimeout(()=>{
+                    isCreatebomb = true;
+                },500);
+    
+                isCreatebomb = false;
+                helicopterDath.muted=false;
+                    helicopterDath.play();
+                    helicopterDath.volume=0.03;
+                    setTimeout(()=>{
+                        helicopterDath.muted=true;
+                    },500);
+                    createbomb();
+            }
+        }
+    
+        if(score==10 && f1)
+        {
+            t1-=100;
+            f1=0;
+        }
+        else if(score==20 && f2)
+        {
+            t1-=50;
+            t2-=100;
+            f2=0;
+        }
+        else if(score==50 && f3)
+        {
+            t1-=50;
+            f3=0;
+        }
+        else if(score==100 && f4){
+            t1-=100;
+            f4=0;
+        }
+    
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //game start
 
@@ -387,6 +433,21 @@ playButton.addEventListener("click",()=>{
         helicopterSound.play();
         helicopterSound.volume=0.05;
         helicopterSound.loop=true;
+
+
+
+
+
+        helicopterRotate = setInterval(()=>{
+            helicopter.style.backgroundImage = "url('helicopter-"+direction+".png')";
+            setTimeout(()=>{
+                helicopter.style.backgroundImage="url('helicopter-"+direction+"-new.png')";
+            },100);
+        },200);
+
+
+
+
         window.requestAnimationFrame(main);
         addKeyEvent();
 });
