@@ -405,24 +405,6 @@ function keydown(e){{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //game start
 
 let playButton = document.querySelector("#playBtn");
@@ -479,9 +461,27 @@ function hideElement(){
     document.querySelector("#hiScore").style.display="none";
     document.querySelector("#reset-hiscore").style.display="none";
     document.querySelector("#discreaptionContainer").style.display="none";
+    document.querySelector("#background-img").style.display="none";
     document.querySelector(".gamebox-container").style.margin=0+"px";
 
     gamebox.style.width=100+"vw";
     gamebox.style.height=100+"vh";
     gamebox.style.borderRadius=0+"%";
+}
+
+
+
+function setBackground_1(){
+    gamebox.style.backgroundImage="url('opacity-changed-backroadTopVeiw.jpg')";
+}
+
+function setBackground_2(count){
+    console.log(count);
+    if(count == 2){
+        gamebox.style.backgroundImage="url('background_2.jpg')";
+    }else if(count == 3){
+        gamebox.style.backgroundImage="url('background_3.jpg')";
+    }else{
+        gamebox.style.backgroundImage="none";
+    }
 }

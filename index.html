@@ -22,6 +22,19 @@
         <span class="score" id="score">Score : 0</span>
         <span class="hi-score" id="hiScore"></span>
         <span id="reset-hiscore">Reset Hi Score</span>
+
+        <span id="background-img">
+            <details>
+                <summary>Select Map</summary>
+                <span id="map-container">
+                    <img class="map" src="opacity-changed-backroadTopVeiw.jpg" onclick="setBackground_1()"/>
+                    <img class="map" src="background_2.jpg" onclick="setBackground_2(2)"/>
+                    <img class="map" src="background_3.jpg" onclick="setBackground_2(3)"/>
+                    <button style="width: 100px; font-size: 20px; text-align: center; margin: auto; border-radius: 7%;"  onclick="setBackground_2(0)">none</button>
+                </span>
+            </details>
+        </span>
+
         <div class="before-gameOver-container">
             <div id="gameOver">
                  <p>Game Over</p>

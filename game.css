@@ -78,6 +78,31 @@ body{
     background-repeat: no-repeat;
     border-radius: 50%;
 }
+
+#background-img{
+    position: absolute;
+    top:10%;
+    left: 1%;
+    background-color: rgb(79, 132, 178);
+    padding:1rem;
+    font-size: 2rem;
+    border-radius: 1rem;
+}
+
+#map-container{
+    display: grid;
+    grid-template-columns: repeat(1,206px);
+    height: 500px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.map{
+    width: 200px;
+    height: 200px;
+    margin: 3px;
+    border: 1px solid white;
+}
+
 .score{
     position: absolute;
     top:3%;
