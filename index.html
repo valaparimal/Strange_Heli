@@ -23,9 +23,22 @@
         <span class="hi-score" id="hiScore"></span>
         <span id="reset-hiscore">Reset Hi Score</span>
 
+        <span id="zomby-img" style="position: absolute; top:50%; right: 2%;"><img src="zomby.png" width="300px"/></span>
+        <span id="bomb-img" style="position: absolute; top:50%; left: 0%;"><img src="bomb.png" width="400px"/></span>
+        
+        <span id="play-more" style="position: absolute; top: 100%; left: 2%;">
+            <details>
+                <summary style="font-size:30px; font-family: Verdana, Geneva, Tahoma, sans-serif; cursor: pointer; padding-bottom: 5px;" >Play more</summary>
+                <ul type="circle" style="text-align: justify;">
+                    <li><a href="https://valaparimal.github.io/Strange-Snake/" style="text-decoration: none; color: red;" target="_blank">Strange Snack</a></li>
+                    <li><a href="https://valaparimal.github.io/Rock-Paper-Scissor-Game/" style="text-decoration: none; color: red;" target="_blank">Rock Paper Scissior</a></li>
+                </ul>
+            </details>
+        </span>
+
         <span id="background-img">
             <details>
-                <summary>Select Map</summary>
+                <summary style="cursor: pointer;">Select Map</summary>
                 <span id="map-container">
                     <img class="map" src="opacity-changed-backroadTopVeiw.jpg" onclick="setBackground_1()"/>
                     <img class="map" src="background_2.jpg" onclick="setBackground_2(2)"/>

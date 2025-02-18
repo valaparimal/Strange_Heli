@@ -440,7 +440,14 @@ playButton.addEventListener("click",()=>{
 // help
 
 document.querySelector("#help").addEventListener("click",()=>{
-    alert("            press keybord key to:    { [ helicopter up : up arrow ]   [ helicopter down : down arrow ]  [ helicopter left : left arrow ]   [ helicopter right : right arrow ]  [ game pause : p or P ]    }")
+    alert(
+        "Controls:\n" +
+        "🚁 Move Up: Up Arrow (↑)\n" +
+        "🚁 Move Down: Down Arrow (↓)\n" +
+        "🚁 Move Left: Left Arrow (←)\n" +
+        "🚁 Move Right: Right Arrow (→)\n" +
+        "⏸️ Pause Game: P or p"
+      );
 });
 
 document.querySelector("#reset-hiscore").addEventListener("click",()=>{
@@ -462,6 +469,9 @@ function hideElement(){
     document.querySelector("#reset-hiscore").style.display="none";
     document.querySelector("#discreaptionContainer").style.display="none";
     document.querySelector("#background-img").style.display="none";
+    document.querySelector("#zomby-img").style.display="none";
+    document.querySelector("#bomb-img").style.display="none";
+    document.querySelector("#play-more").style.display="none";
     document.querySelector(".gamebox-container").style.margin=0+"px";
 
     gamebox.style.width=100+"vw";
