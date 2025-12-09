@@ -1,96 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strange-Heli</title>
+    <title>Strange-Heli-Paly</title>
     <link rel="stylesheet" href="game.css">
 </head>
+
 <body>
-    <header>
-        <h1 id="gameTitle">
-            Strange Heli
-        </h1>
-    </header>
     <main>
-        <div class="playBtn-container">
-            <button id="playBtn">Play</button>
-        </div>
         <div class="gamebox-container">
             <div class="gamebox"></div>
+            <button id="gameOver">
+                    Game Over
+            </button>
         </div>
         <span class="score" id="score">Score : 0</span>
-        <span class="hi-score" id="hiScore"></span>
-        <span id="reset-hiscore">Reset Hi Score</span>
 
-        <span id="zomby-img" style="position: absolute; top:50%; right: 2%;"><img src="zomby.png" width="300px"/></span>
-        <span id="bomb-img" style="position: absolute; top:50%; left: 0%;"><img src="bomb.png" width="400px"/></span>
-        
-        <span id="play-more" style="position: absolute; top: 100%; left: 2%;">
-            <details>
-                <summary style="font-size:30px; font-family: Verdana, Geneva, Tahoma, sans-serif; cursor: pointer; padding-bottom: 5px;" >Play more</summary>
-                <ul type="circle" style="text-align: justify;">
-                    <li><a href="https://valaparimal.github.io/Strange-Snake/" style="text-decoration: none; color: red;" target="_blank">Strange Snack</a></li>
-                    <li><a href="https://valaparimal.github.io/Rock-Paper-Scissor-Game/" style="text-decoration: none; color: red;" target="_blank">Rock Paper Scissior</a></li>
-                </ul>
-            </details>
-        </span>
 
-        <span id="background-img">
-            <details>
-                <summary style="cursor: pointer;">Select Map</summary>
-                <span id="map-container">
-                    <img class="map" src="opacity-changed-backroadTopVeiw.jpg" onclick="setBackground_1()"/>
-                    <img class="map" src="background_2.jpg" onclick="setBackground_2(2)"/>
-                    <img class="map" src="background_3.jpg" onclick="setBackground_2(3)"/>
-                    <button style="width: 100px; font-size: 20px; text-align: center; margin: auto; border-radius: 7%;"  onclick="setBackground_2(0)">none</button>
-                </span>
-            </details>
-        </span>
+        <!-- <div class="before-gameOver-container">
 
-        <div class="before-gameOver-container">
-            <div id="gameOver">
-                 <p>Game Over</p>
-            </div>
-         </div>
-         
-         
-         <div id="discreaptionContainer">
-            <div class="title"  style="font-size: 25px; padding: 5px;">🚁 Strange Heli - Game Description 🧟</div>
-    
-            <div class="section">
-                <p style="margin-left: 30px;"><b>Strange Heli</b> is an action-packed helicopter game where you must stop zombies from reaching the sky!</p>
-            </div>
-    
-            <div class="section">
-                <h3>🎮 How to Play:</h3>
-                <div style="margin-left: 30px;">
-                    <p >✅ <b>Control the Helicopter:</b> Move <span class="highlight">left, right, forward, and backward</span> to dodge and attack.</p>
-                    <p>✅ <b>Attack with Bombs:</b> Press <span class="highlight">Spacebar</span> to drop bombs.</p>
-                    <p>✅ <b>Zombie Movement:</b> Zombies rise <span class="highlight">from the ground to the sky</span>. Destroy them before they reach you!</p>
-                </div>
-            </div>
-    
-            <div class="section">
-                <h3>🔥 Objective:</h3>
-                <p style="margin-left: 30px;">Destroy as many zombies as possible and <span class="highlight">survive as long as you can!</span></p>
-            </div>
-    
-            <div class="section">
-                <h3>⚠ Game Over Condition:</h3>
-                <p style="margin-left: 30px;">If a <b>zombie touches the helicopter</b> or <b>reach at top</b>, the game ends!</p>
-            </div>
-    
-            <div class="section">
-                <h3>💣 Are you ready for the challenge?</h3>
-                <p style="margin-left: 30px;">Fly, fight, and bomb your way to victory! 🚁💥</p>
-            </div>
-        </div>
-        <!-- style="background: #660000; color: #ffcccc;" -->
+        </div> -->
     </main>
-    <footer>
-        <pre id="help">Help</pre>
-    </footer>
-    <script src="game.js"></script>
+    <script src="play.js"></script>
 </body>
+
 </html>
