@@ -1,64 +1,78 @@
-*{
-    margin:0%;
+* {
+    margin: 0%;
 }
-body{
+
+html, body {
+    overscroll-behavior: none; 
+    overflow-x: hidden;
+
+}
+
+body {
+    min-height: 100vh;
+    /* width: 100vw; */
     text-align: center;
-    background: linear-gradient(lightblue,lightgreen,yellow,green);
+    background: linear-gradient(lightblue, lightgreen, yellow, green);
 }
 
-.gamebox-container{
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
+.header{
+    padding: 10px;
 }
-.gamebox{
-    height: 35rem;
-    width:50rem;
-    /* background: linear-gradient(lightblue,lightgreen,yellow,green); */
-    background-image: url("opacity-changed-backroadTopVeiw.jpg");
-    background-size: 150% 150%;
-    background-repeat: no-repeat;
-    /* border: 1px solid green; */
-    border-radius: 10%;
-    display: grid;
-    grid-template-columns: repeat(8,1fr);
-    grid-template-rows:repeat(15,1fr);
-    column-gap: 2rem;
+.header h1 {
+    float: left;
+    margin-left: 30px;
 }
 
-.playBtn-container{
-    position: absolute;
-    top:40%;
-    height:5rem;
-    width:100%;
+.gamebox-container {
+    width: 100vw;
+    margin-top: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#playBtn{
-    height:6rem;
-    width:10rem;
-    font-size: 3rem;
-    background:linear-gradient(to right,blue,lightblue,yellow,lightgreen,green);
-    border-radius: 3rem;
-    border:2px solid white;
+
+.gamebox {
+    height: 35rem;
+    width: 50rem;
+    /* background: linear-gradient(lightblue,lightgreen,yellow,green); */
+    background-image: url("opacity-changed-backroadTopVeiw.jpg");
+    background-repeat: no-repeat;
+    /* border: 1px solid green; */
+    border-radius: 10%;
+    position: relative;
+    /* column-gap: 2rem; */
 }
-#playBtn:hover{
-    cursor:pointer;
+
+
+#playBtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 6rem;
+    width: 10rem;
+    font-size: 3rem;
+    background: linear-gradient(to right, blue, lightblue, yellow, lightgreen, green);
+    border-radius: 3rem;
+    border: 2px solid white;
+}
+
+#playBtn:hover {
+    cursor: pointer;
     font-size: 4rem;
 }
 
 
-.helicopter{
+.helicopter {
     background-image: url("helicopter-right.png");
     background-size: contain;
     background-repeat: no-repeat;
-    border-radius:50%;
+    border-radius: 50%;
     width: 5rem;
     height: 5rem;
 }
 
-.bomb{
+.bomb {
     /* background:linear-gradient(to right,green,lightgreen,green,lightgreen,green); */
     background-image: url("bomb.png");
     background-size: contain;
@@ -67,122 +81,144 @@ body{
     border-radius: 50%;
 }
 
-.zomby{
+.zomby {
     background-image: url("zomby.png");
     background-size: contain;
     background-repeat: no-repeat;
 }
-.temp{
+
+.temp {
     background-image: url("zomby.png");
     background-size: contain;
     background-repeat: no-repeat;
     border-radius: 50%;
 }
 
-#background-img{
+#background-img {
     position: absolute;
-    top:10%;
+    top: 50px;
     left: 1%;
     background-color: rgb(79, 132, 178);
-    padding:1rem;
+    padding: 1rem;
     font-size: 2rem;
     border-radius: 1rem;
 }
 
-#map-container{
+#map-container {
     display: grid;
-    grid-template-columns: repeat(1,206px);
+    grid-template-columns: repeat(1, 206px);
     height: 500px;
     overflow-y: scroll;
     scrollbar-width: none;
 }
-.map{
+
+.map {
     width: 200px;
     height: 200px;
     margin: 3px;
     border: 1px solid white;
 }
 
-.score{
-    position: absolute;
-    top:3%;
-    right: 5%;
-    background-color: rgb(79, 132, 178);
-    padding:1rem;
-    font-size: 2rem;
-    border-radius: 1rem;
-}
-.hi-score{
-    position: absolute;
-    top:15%;
-    right: 5%;
-    background-color: rgb(79, 132, 178);
-    padding:1rem;
-    font-size: 2rem;
-    border-radius: 1rem;
+
+#more {
+    position: relative;
+    justify-self: end;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    user-select: none;
 }
 
-#reset-hiscore{
-    position:absolute;
-    top:27%;
-    right:5%;
+#more-symbole {
+    background-color: aqua;
+    padding: 0.5rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    font-size: large;
+    width: 30px;
+    display: none;
+}
+
+#more-details {
+    z-index: 1;
+    top: 50px;
+    position: absolute;
+    background-color: lightblue;
+    box-shadow: 0px 20px 50px 5px;
+    border-radius: 20px;
+    padding: 1rem 1rem;
+    min-width: 250px;
+}
+
+.score, .hi-score, #reset-hiscore {
     background-color: rgb(79, 132, 178);
-    font-size: 2rem;
     padding: 1rem;
+    font-size: 2rem;
     border-radius: 1rem;
+    margin-bottom: 10px;
+    z-index: 11;
 }
-#reset-hiscore:hover{
+
+#reset-hiscore:hover {
     opacity: 50%;
-    cursor:grabbing;
-    color:white;
+    cursor: grabbing;
+    color: white;
 }
 
-
-.before-gameOver-container{
-    display:none;
-}
-.after-gameOver-container{
-    position: absolute;
-    top:0%;
-    height:100%;
-    width:100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#gameOver{
-    height:6rem;
-    width:15rem;
-    font-size: 3rem;
-    background:linear-gradient(to right,blue,lightblue,yellow,lightgreen,green);
+#gameOver {
+    height: 6rem;
+    width: 15rem;
+    font-size: 2.5rem;
+    background: linear-gradient(to right, blue, lightblue, yellow, lightgreen, green);
     border-radius: 3rem;
-    border:2px solid white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#gameOver:hover{
-    cursor:pointer;
-    font-size: 3.1rem;
+    border: 2px solid white;
+    z-index: 1;
+    display: none;
+
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-#help{
-    position: absolute;
-    top : 1%;
-    left: 1%;
+#gameOver:hover {
+    cursor: pointer;
+}
+
+#help {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
     font-size: 2rem;
     background-color: aqua;
     padding: 0.5rem;
     border-radius: 1rem;
-    border:none;
+    border: none;
 }
-#help:hover{
+
+#help:hover {
     opacity: 50%;
     cursor: help;
 }
 
+#zomby-img img, #bomb-img img{
+    width: 300px;
+    height: 300px;
+    opacity: 0.7;
+}
 
-#discreaptionContainer{
+#play-more{
+    margin-bottom: 100px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    cursor: pointer;
+    float: left;
+    padding-left: 20px;
+}
+
+
+#discreaptionContainer {
     width: 800px;
     margin: auto;
     background-color: white;
@@ -193,7 +229,161 @@ body{
     border-radius: 50px;
 }
 
-.section{
+.section {
     text-align: left;
     padding-top: 10px;
+}
+
+#play-more summary{
+    background-color: aliceblue;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 1px;
+}
+
+#play-more ul{
+    background-color: aliceblue;
+    margin-top: 10px;
+    list-style-type: none;
+    padding: 5px;
+    margin-left: 40px;
+    box-shadow: 0px 0px 10px 1px;
+    border-radius: 10px;
+}
+
+#play-more ul li{
+    padding: 5px;
+    cursor: pointer;
+}
+
+@media (max-width:850px) {
+    .gamebox {
+        width: 80%;
+        height: 400px;
+        max-height: 90vw;
+    }
+
+    #discreaptionContainer {
+        width: 80%;
+    }
+
+
+    #help,
+    #gameOver,
+    #playBtn,
+    summary {
+        font-size: large;
+    }
+
+    
+    #reset-hiscore,
+    .hi-score,
+    .score{
+        font-size: large;
+        padding: 0.5rem;
+    }
+
+    #more-details{
+        width: 150px;
+        min-width: unset;
+    }
+
+    #playBtn,
+    #gameOver {
+        width: 5rem;
+        height: 3rem;
+    }
+
+    #discreaptionContainer {
+        font-size: small;
+    }
+
+    #zomby-img img, #bomb-img img{
+    width: 200px;
+    height: 200px;
+}
+}
+
+
+
+@media (max-width:400px), (max-height:400px){
+    #more-symbole {
+        display: unset;
+    }
+
+    .small-screen {
+        display: none;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0%;
+        right: 0%;
+        height: 100vh;
+        width: 100vw;
+        background-color: rgba(128, 124, 124, 0.578);
+        z-index: 10;
+    }
+
+    .show {
+        display: unset;
+    }
+
+    #more-details {
+        z-index: 11;
+    }
+
+
+    #map-container {
+    grid-template-columns: repeat(1, 100px);
+    height: 200px;
+}
+
+
+.map {
+    width: 90px;
+    height: 90px;
+    margin: 3px;
+    border: 1px solid white;
+}
+
+#zomby-img img, #bomb-img img{
+    width: 100px;
+    height: 100px;
+}
+}
+
+
+
+
+
+
+
+/* game start */
+
+.full-size-game-box {
+
+    display: grid;
+    grid-template-columns: repeat(8, 12.5vw);
+    grid-template-rows: repeat(15,6.67vh);
+
+
+    /* height: 100vh; */
+    /* width: 100vw; */
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    border-radius: 0%;
+    /* background-size: 150% 150%; */
+    background-size: cover;
+
+
+    
+}
+
+.score{
+    position: fixed;
+    top: 20px;
+    right: 20px;
 }
