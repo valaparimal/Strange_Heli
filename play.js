@@ -342,32 +342,32 @@ window.addEventListener("touchstart", function(e){
     startY = e.touches[0].clientY;
 });
 
-window.addEventListener("touchmove", function(e){
-    let dx = e.touches[0].clientX - startX;
-    let dy = e.touches[0].clientY - startY;
+window.addEventListener("touchend", function(e) {
+    let endX = e.changedTouches[0].clientX;
+    let endY = e.changedTouches[0].clientY;
 
-    if(Math.abs(dx) > Math.abs(dy)) {
+    let dx = endX - startX;
+    let dy = endY - startY;
+
+    if (Math.abs(dx) > Math.abs(dy)) {
         // horizontal swipe
-        if(dx > 0) {
-            // right
+        if (dx > 0) {
             right();
         } else {
-            // left
             left();
         }
     } else {
         // vertical swipe
-        if(dy > 0) {
-            // down
+        if (dy > 0) {
             down();
         } else {
-            // up
             up();
         }
     }
 
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
+    // reset start point
+    startX = endX;
+    startY = endY;
 });
 
 }
