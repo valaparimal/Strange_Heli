@@ -36,7 +36,7 @@ function createZomby() {
     zomby = document.createElement("div");
     zomby.setAttribute("class", "zomby");
     zomby.style.gridRowStart = Math.floor(Math.random() * 5) + 10;
-    zomby.style.gridColumnStart = Math.floor(Math.random() * 5) + 1;
+    zomby.style.gridColumnStart = Math.floor(Math.random() * 6) + 1;
     zomby.style.alignContent = "center";
     gamebox.append(zomby);
 }
@@ -133,7 +133,7 @@ function bombMove() {
 
 function bombUpMove() {
     document.querySelectorAll("#bombUp").forEach((bomb) => {
-        bomb.style.width = bomb.offsetWidth - 10 + "px";
+        bomb.style.width = bomb.offsetWidth - 7 + "px";
         if (--bomb.style.gridRowStart == 0) {
             bomb.remove();
         }
@@ -143,7 +143,7 @@ function bombUpMove() {
 function bombDownMove() {
 
     document.querySelectorAll("#bombDown").forEach((bomb) => {
-        bomb.style.width = bomb.offsetWidth - 10 + "px";
+        bomb.style.width = bomb.offsetWidth - 7 + "px";
         if (++bomb.style.gridRowStart == 16) {
             bomb.remove();
         }
@@ -152,7 +152,7 @@ function bombDownMove() {
 
 function bombLeftMove() {
     document.querySelectorAll("#bombLeft").forEach((bomb) => {
-        bomb.style.height = bomb.offsetHeight - 8 + "px";
+        bomb.style.height = bomb.offsetHeight - 5 + "px";
         if (--bomb.style.gridColumnStart == 0) {
             bomb.remove();
         }
@@ -161,7 +161,7 @@ function bombLeftMove() {
 
 function bombRightMove() {
     document.querySelectorAll("#bombRight").forEach((bomb) => {
-        bomb.style.height = bomb.offsetHeight - 8 + "px";
+        bomb.style.height = bomb.offsetHeight - 5 + "px";
         if (++bomb.style.gridColumnStart == 9) {
             bomb.remove();
         }
@@ -379,7 +379,7 @@ function down() {
         helicopter.style.gridRowStart++;
     } else if (positiony > (-gameboxHeight)) {
         positiony -= 10;
-        gamebox.style.backgroundPosition = positionx + "px " + positiony + "px";
+        // gamebox.style.backgroundPosition = positionx + "px " + positiony + "px";
     }
     previous = "ArrowDown";
 }
@@ -391,7 +391,7 @@ function up() {
         helicopter.style.gridRowStart--;
     } else if (positiony < 0) {
         positiony += 10;
-        gamebox.style.backgroundPosition = positionx + "px " + positiony + "px";
+        // gamebox.style.backgroundPosition = positionx + "px " + positiony + "px";
     }
     previous = "ArrowUp";
 }
@@ -403,7 +403,7 @@ function left() {
         helicopter.style.gridColumnStart--;
     } else if (positionx < 0) {
         positionx += 10;
-        gamebox.style.backgroundPosition = positionx + "px " + positiony + "px";
+        // gamebox.style.backgroundPosition = positionx + "px " + positiony + "px";
     }
     previous = "ArrowLeft";
 }
@@ -411,11 +411,11 @@ function left() {
 function right() {
     // helicopter.style.backgroundImage="url('helicopter-right.png')";
     direction = "right";
-    if (helicopter.style.gridColumnStart < 9 && previous == "ArrowRight") {
+    if (helicopter.style.gridColumnStart < 8 && previous == "ArrowRight") {
         helicopter.style.gridColumnStart++;
     } else if (positionx > (-gameboxWidth)) {
         positionx -= 10;
-        gamebox.style.backgroundPosition = positionx + "px " + positiony + "px";
+        // gamebox.style.backgroundPosition = positionx + "px " + positiony + "px";
     }
     previous = "ArrowRight";
 }
