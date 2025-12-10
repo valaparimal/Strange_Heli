@@ -342,22 +342,31 @@ window.addEventListener("touchstart", function(e){
     startY = e.touches[0].clientY;
 });
 
-window.addEventListener("touchend", function(e) {
+
+const SWIPE_THRESHOLD = 30;
+
+window.addEventListener("touchend", function (e) {
     let endX = e.changedTouches[0].clientX;
     let endY = e.changedTouches[0].clientY;
 
     let dx = endX - startX;
     let dy = endY - startY;
 
+    // if movement is too small, do nothing
+    if (Math.abs(dx) < SWIPE_THRESHOLD && Math.abs(dy) < SWIPE_THRESHOLD) {
+        return; // SMALL movement → ignore
+    }
+
+    // Decide direction
     if (Math.abs(dx) > Math.abs(dy)) {
-        // horizontal swipe
+        // Horizontal
         if (dx > 0) {
             right();
         } else {
             left();
         }
     } else {
-        // vertical swipe
+        // Vertical
         if (dy > 0) {
             down();
         } else {
@@ -365,11 +374,10 @@ window.addEventListener("touchend", function(e) {
         }
     }
 
-    // reset start point
+    // Reset
     startX = endX;
     startY = endY;
 });
-
 }
 
 
