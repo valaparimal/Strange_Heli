@@ -388,3 +388,21 @@ body {
     top: 20px;
     right: 20px;
 }
+
+
+
+/* fullscrean */
+
+
+#fullscreenBtn{
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(215, 224, 224, 0.367);
+    font-size: large;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    width: 40px;
+    height: 40px;
+}
