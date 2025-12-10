@@ -6,7 +6,7 @@ let helicopter = document.createElement("div");
 let bomb = document.createElement("div");
 let zomby, bombthrowTime = 0;
 let previous = "ArrowRight";
-let gamebox = document.querySelector(".gamebox");
+let gamebox = document.querySelector(".full-size-game-box");
 let temptime = 0, moveTime = 0, a = 0, score = 0, t1 = 2000, t2 = 500;
 let f1 = 1, f2 = 1, f3 = 1, f4 = 1;
 let b = 0;
@@ -442,7 +442,6 @@ function throwBomb() {
 //game start
 start();
 function start() {
-    setGameBox();
     helicopterSound.play();
     helicopterSound.volume = 0.05;
     helicopterSound.loop = true;
@@ -461,15 +460,9 @@ function start() {
 
 
 
-function setGameBox() {
-    gamebox.classList.add("full-size-game-box");
-}
-
-
-
-function setBackground_1() {
-    gamebox.style.backgroundImage = "url('opacity-changed-backroadTopVeiw.jpg')";
-}
+// function setBackground_1() {
+//     gamebox.style.backgroundImage = "url('opacity-changed-backroadTopVeiw.jpg')";
+// }
 
 function setBackground_2(count) {
     console.log(count);
