@@ -333,7 +333,9 @@ window.addEventListener("click", throwBomb);
 
 
 // for mobile screen
-let startX = 0, startY = 0;
+
+function addTouchEvent(){
+    let startX = 0, startY = 0;
 
 window.addEventListener("touchstart", function(e){
     startX = e.touches[0].clientX;
@@ -368,6 +370,7 @@ window.addEventListener("touchmove", function(e){
     startY = e.touches[0].clientY;
 });
 
+}
 
 
 
@@ -476,3 +479,18 @@ function setBackground_2(count) {
         gamebox.style.backgroundImage = "none";
     }
 }
+
+
+// full screan
+
+const btn = document.getElementById("fullscreenBtn");
+
+btn.addEventListener("click", (e) => {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+        btn.textContent = "🗗";     // exit symbol
+    } else {
+        document.exitFullscreen();
+        btn.textContent = "⛶";     // enter symbol
+    }
+});
