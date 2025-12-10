@@ -363,22 +363,19 @@ body {
 /* game start */
 
 .full-size-game-box {
+    background-image: url("opacity-changed-backroadTopVeiw.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 
     display: grid;
     grid-template-columns: repeat(8, 12.5vw);
     grid-template-rows: repeat(15,6.67vh);
-
-
     /* height: 100vh; */
     /* width: 100vw; */
     position: absolute;
     top: 0%;
     left: 0%;
-    border-radius: 0%;
-    /* background-size: 150% 150%; */
-    background-size: cover;
-
-
     
 }
 
