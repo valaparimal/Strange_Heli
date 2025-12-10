@@ -166,6 +166,10 @@ body {
     color: white;
 }
 
+.score{
+    opacity: 0.6;
+}
+
 #gameOver {
     height: 6rem;
     width: 15rem;
